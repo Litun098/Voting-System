@@ -15,11 +15,10 @@ const create = async (req, res) => {
         message: "Title and options are required.",
       });
     }
-    
-    if(startDate <= Date.now()){
-      status = true
+
+    if (startDate <= Date.now()) {
+      status = true;
     }
-    
 
     const poll = await Poll.create({
       userId,
@@ -27,7 +26,7 @@ const create = async (req, res) => {
       options,
       startDate,
       endDate,
-      status
+      status,
     });
     return res.status(200).send({
       message: "New poll created.",
@@ -105,11 +104,14 @@ const getPoll = async (req, res) => {
 // Get all polls
 const getAllPolls = async (req, res) => {
   try {
-    const poll = await Poll.find({}, { status: true });
+    const polls = await Poll.find(
+      { status: true },
+      { userId: 1, title: 1, options: 1, startDate: 1, endDate: 1 }
+    );
     return res.status(200).send({
       message: "Data fetched successfully",
       success: true,
-      data: poll,
+      data: polls,
     });
   } catch (err) {
     console.log(err);
