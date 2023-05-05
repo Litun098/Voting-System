@@ -1,6 +1,6 @@
-# Tax Billing
+# Voting System Backend
 
-This is a tax billing project that uses the following technologies:
+This is a Voting project that uses the following technologies:
 
 - Node.js
 - Express.js
