@@ -11,10 +11,12 @@ const responseSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Poll",
       required: true,
+      unique:true
     },
     votedFor: {
       type: String,
       required: true,
+      unique:true
     },
   },
   { timestamps: true }

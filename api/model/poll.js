@@ -22,10 +22,10 @@ const pollSchema = new mongoose.Schema(
       default: false,
     },
     startDate: {
-      date: String,
+      type: Date,
     },
     endDate: {
-      date: String,
+      type: Date,
     },
   },
   { timestamps: true }
