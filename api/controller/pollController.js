@@ -45,11 +45,28 @@ const create = async (req, res) => {
 // Delete poll with Poll Id
 const destroy = async (req, res) => {
   try {
-    const poll = await Poll.destroy(req.params.id);
+    const userId = req.userId;
+    const poll = await Poll.findById(req.query.id);
+
+    if (!poll) {
+      return res.status(404).send({
+        message: "Poll not found",
+        success: false,
+      });
+    }
+
+    if (poll.userId != userId) {
+      return res.status(401).send({
+        message: "Unauthorized access",
+        success: false,
+      });
+    }
+
+    const deletedPoll = await Poll.findByIdAndDelete(req.query.id);
     return res.status(200).send({
       message: "Deleted successfully",
       success: true,
-      data: poll,
+      data: deletedPoll,
     });
   } catch (err) {
     console.log(err);
@@ -62,17 +79,31 @@ const destroy = async (req, res) => {
 
 // Update Poll Status
 const update = async (req, res) => {
+  console.log("Hitting this API");
   try {
-    const pollId = req.params.pollId;
-    const requestStatus = req.params.status;
-    const poll = await Poll.findOneAndUpdate(
-      { pollId },
-      { status: requestStatus }
+    const id = req.query.id;
+    const requestStatus = req.query.status;
+    const userId = req.userId;
+    console.log(id, requestStatus, userId);
+    const poll = await Poll.findById(id);
+
+    if (poll.userId != userId) {
+      return res.status(401).send({
+        message: "Unauthorized access",
+        success: false,
+      });
+    }
+
+    const updatedPoll = await Poll.findOneAndUpdate(
+      { _id: id },
+      { status: requestStatus },
+      { new: true } // This option will return the updated document
     );
+
     return res.status(200).send({
       message: "Poll updated successfully",
       success: true,
-      data: poll,
+      data: updatedPoll,
     });
   } catch (err) {
     console.log(err);

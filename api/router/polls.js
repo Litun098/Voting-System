@@ -5,13 +5,15 @@ const {
   destroy,
   update,
   getAllPolls,
+  getPoll,
 } = require("../controller/pollController");
 const { verifyToken } = require("../config/jwtAuth");
 
 pollRouter.post("/poll",verifyToken, create);
-pollRouter.delete("/poll/:id",verifyToken, destroy);
-pollRouter.patch("/poll/:id",verifyToken, update);
-pollRouter.get("/poll/:id",verifyToken, update);
+pollRouter.delete("/poll",verifyToken, destroy);
+pollRouter.put("/poll",verifyToken, update);
+pollRouter.get("/poll/:id",verifyToken, getPoll);
 pollRouter.get("/poll", getAllPolls);
 
 module.exports = pollRouter;
+
