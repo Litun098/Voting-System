@@ -9,7 +9,6 @@ async function verifyToken(req, res, next) {
       console.log("Token not found.");
       return res.status(401).send({ msg: "Auth token is missing." });
     }
-    console.log(token);
     const decodedToken = jwt.verify(token, process.env.secret_key);
     req.userId = decodedToken.id;
     next();

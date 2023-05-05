@@ -1,18 +1,20 @@
-const Polls = require("../model/poll");
+const Poll = require("../model/poll");
+const User = require("../model/user");
 const Response = require("../model/response");
 
 // Vote
 const vote = async (req, res) => {
   try {
     const userId = req.userId;
-    const pollId = req.params.pollId;
-    const votedFor = req.params.votedFor;
+    const pollId = req.query.pollId;
+    const votedFor = req.query.votedFor;
+    // console.log(userId, pollId, votedFor);
 
-    const response = await Response.create({ userId, pollId, votedFor });
-    const poll = await Polls.findOne({ _id: pollId });
-    const createdBy = await user.findOneById(poll.userId);
+    const response = await Response.create({ user:userId, poll:pollId, votedFor });
+    const poll = await Poll.findOne({ _id: pollId });
+    const createdBy = await User.findOne({_id:poll.userId});
 
-    console.log(poll, response);
+    console.log(createdBy);
     return res.status(500).json({
       success: true,
       message: `Voted successfully. Result is expected to be declared on ${poll.endDate}`,
@@ -28,6 +30,7 @@ const vote = async (req, res) => {
   }
 };
 
+// Get all polls voted by user
 const allPollsVotedByUser = async (req, res) => {
   const userId = req.userId;
 
@@ -52,10 +55,10 @@ const allPollsVotedByUser = async (req, res) => {
 const getResultOfPoll = async (req, res) => {
   try {
     const pollId = req.params.pollId;
-    const poll = await Polls.findById(pollId);
+    const poll = await Poll.findById(pollId);
     const response = await Response.find({ poll: pollId });
 
-    if (poll.status === "active"){
+    if (poll.status === "active") {
       return res.status(500).json({
         success: false,
         message: "Users still voting",
@@ -63,7 +66,6 @@ const getResultOfPoll = async (req, res) => {
     }
 
     // Todo calculate vote
-
   } catch (err) {
     console.log(err);
     return res.status(500).json({
@@ -76,5 +78,5 @@ const getResultOfPoll = async (req, res) => {
 module.exports = {
   vote,
   getResultOfPoll,
-  allPollsVotedByUser
+  allPollsVotedByUser,
 };

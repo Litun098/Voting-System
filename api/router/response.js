@@ -1,12 +1,12 @@
 const express = require('express');
-const { verify } = require('jsonwebtoken');
 const { vote, allPollsVotedByUser } = require('../controller/responseController');
+const { verifyToken } = require('../config/jwtAuth');
 const voteRouter = express.Router();
 
 // API to vote
-voteRouter.post('/vote/:userId/poll/:pollId/vote/:votedFor',verify,vote);
+voteRouter.post('/vote',verifyToken,vote);
 
 // Get all polls voted by user
-voteRouter.get('/vote/:userId',verify,allPollsVotedByUser);
+voteRouter.get('/vote/:userId',verifyToken,allPollsVotedByUser);
 
 module.exports = voteRouter
