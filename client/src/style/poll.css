@@ -1,0 +1,38 @@
+.poll-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 10px;
+  max-width: 400px;
+}
+
+.poll-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.poll-title {
+  margin: 0;
+}
+
+.poll-options {
+  display: flex;
+  flex-direction: column;
+}
+
+.poll-value {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .poll-card {
+    max-width: 100%;
+  }
+}

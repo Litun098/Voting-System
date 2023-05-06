@@ -29,6 +29,7 @@
 
 .navbar-logout {
   margin-left: auto;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {

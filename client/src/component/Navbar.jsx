@@ -10,6 +10,7 @@ function Navbar(props) {
         <div className="navbar-logo">
           <HowToVoteIcon />
           <div className="navbar-user">Username</div>
+          <div className="navbar-user">Home</div>
         </div>
         <div className="navbar-logout">
           <LogoutIcon/>
