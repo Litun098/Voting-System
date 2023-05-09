@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../style/poll.css'
+import '../styles/poll.css'
 
 const Poll = () => {
   const [options, setOptions] = useState([

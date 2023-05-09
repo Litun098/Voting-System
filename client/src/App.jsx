@@ -3,12 +3,14 @@ import React from "react";
 // import Register from "./page/Register";
 // import {BrowserRouter as Router,Route,Switch,Link} from "react-router-dom";
 import Home from "./page/Home";
+import Poll from "./page/AddPoll";
+import Result from "./page/Result";
 
 
 function App() {
   return (
     <div className="App">
-      <Home/>    
+      <Result/>    
     </div>
   );
 }

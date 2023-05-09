@@ -1,8 +1,7 @@
 import React from "react";
-import "../style/home.css";
+import "../styles/homeComponent.css";
 import Navbar from "../component/Navbar";
-import HomeComponent from "../component/Home";
-import Poll from "../component/Poll";
+import HomeComponent from "../component/HomeComponent";
 
 function Home() {
   return (

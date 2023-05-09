@@ -1,7 +1,7 @@
 import React from "react";
 import HowToVoteIcon from "@mui/icons-material/HowToVote";
 import LogoutIcon from '@mui/icons-material/Logout';
-import "../style/navbar.css";
+import "../styles/navbar.css";
 
 function Navbar(props) {
   return (

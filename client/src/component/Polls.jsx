@@ -1,5 +1,6 @@
 import React from 'react'
 import Poll from './Poll'
+import '../styles/polls.css'
 
 const Polls = () => {
   return (

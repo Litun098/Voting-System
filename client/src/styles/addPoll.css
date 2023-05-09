@@ -1,0 +1,100 @@
+/* addPoll.css */
+
+/* Form container */
+.form-container {
+  max-width: 500px;
+  margin: 5px auto;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Form label */
+.form-container label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #2f2f2f;
+}
+
+/* Form input */
+.form-container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #2f2f2f;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+/* Add option button */
+.form-container button[type="button"] {
+  display: inline-block;
+  background-color: #2f2f2f;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+/* Remove option button */
+.form-container .option-container button[type="button"] {
+  display: inline-block;
+  background-color: #b91d1d;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/* Create poll button */
+.form-container button[type="submit"] {
+  display: inline-block;
+  background-color: #2f2f2f;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+/* Option container */
+.option-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Option label */
+.option-container label {
+  margin-right: 10px;
+}
+
+/* Start date and end date input */
+.form-container input[type="datetime-local"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #2f2f2f;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+}
