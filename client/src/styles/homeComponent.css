@@ -23,17 +23,20 @@ p {
 
 .searchBar {
   outline: none;
-  border:1px;
+  border:2px solid black;
   border-style: none none solid none;
   width: 300px;
   border-right: none;
+  color: white;
+  background-color: transparent;
 }
 
 .search-button{
-  border:1px;
+  border:2px solid black;
   border-style: none none solid none;
   padding:4px;
   cursor: pointer;
+  background-color: transparent;
 }
 
 .links {

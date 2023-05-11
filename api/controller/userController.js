@@ -10,11 +10,10 @@ const signup = async (req, res) => {
   const password = bcrypt.hashSync(req.body.password, 10);
 
   try {
-    // const findExistUserWithEmail = await User.findOne({ email: email });
-    // console.log("API hit")
-    // if (findExistUserWithEmail) {
-    //   return res.status(400).send({ message: "Email already exists" });
-    // }
+    const findExistUserWithEmail = await User.findOne({ email: email });
+    if (findExistUserWithEmail) {
+      return res.status(400).send({ message: "Email already exists" });
+    }
     const user = await User.create({
       firstname,
       lastname,
@@ -55,6 +54,8 @@ const login = async (req, res) => {
     // };
     const token = jwt.sign(
       {
+        firstname:user.firstname,
+        lastname:user.lastname,
         id: user._id
       },
       process.env.secret_key,

@@ -3,9 +3,7 @@ const Poll = require("../model/poll");
 // Create Poll
 const create = async (req, res) => {
   const userId = req.userId;
-  const { title, options } = req.body;
-  const startDate = Date.now();
-  const endDate = Date.now() + 2 * 24 * 60 * 60 * 1000; //Adding 2 days in milliseconds
+  const { title, options,startDate,endDate } = req.body;
   let status = false;
 
   try {
@@ -139,6 +137,7 @@ const getAllPolls = async (req, res) => {
       { status: true },
       { userId: 1, title: 1, options: 1, startDate: 1, endDate: 1 }
     );
+    console.log(polls);
     return res.status(200).send({
       message: "Data fetched successfully",
       success: true,

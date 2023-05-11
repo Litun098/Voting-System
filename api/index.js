@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const authRouter = require("./router/auth");
 const pollRouter = require("./router/polls");
 const voteRouter = require("./router/response");
@@ -11,6 +12,7 @@ require("dotenv").config();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors()); // allow all origins
 
 mongoose
   .connect(process.env.mongoUrl, {})

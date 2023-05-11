@@ -8,8 +8,11 @@
   height: 200px;
   max-width: 400px;
   min-width: 300px;
+  color: black;
   box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.236);
+  background-color: rgba(255, 255, 255, 0.1);
 }
+
 
 .poll-header {
   display: flex;
@@ -27,12 +30,23 @@
   flex-direction: column;
 }
 
-.poll-value {
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  cursor: pointer;
+.poll-option {
+  background-color: transparent;
+  color: black;
+  border: 1px solid black;
+}
+
+.poll-option:hover {
+  background-color: #f5f5f5;
+}
+
+.poll-option-text {
+  margin-right: 10px;
+}
+
+.poll-option-votes {
+  font-size: 0.8rem;
+  font-weight: bold;
 }
 
 @media only screen and (max-width: 600px) {
