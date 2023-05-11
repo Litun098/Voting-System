@@ -1,20 +1,18 @@
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgba(78, 77, 82, 0.982);
+  background-color: #1c25de35;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   height: 60px;
-  padding: 0 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
 }
 
 .navbar-container {
+  width: 100%;
+  max-width: 1200px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .navbar-logo {
@@ -22,23 +20,60 @@
   align-items: center;
 }
 
-.navbar-user {
-  margin-left: 10px;
-  margin-right: 10px;
+.navbar-logo a {
+  color: #000;
+  text-decoration: none;
 }
 
-.navbar-logout {
-  margin-left: auto;
+a{
+  text-decoration: none;
+}
+
+.navbar-logo:hover {
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
-  .navbar-container {
-    flex-wrap: wrap;
-  }
-
-
-  .navbar-logout {
-    margin-right: 0;
-  }
+.navbar-auth {
+  display: flex;
+  align-items: center;
 }
+
+.navbar-register,
+.navbar-logout {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  margin-left: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  transition: all 0.2s ease;
+}
+
+.navbar-register:hover,
+.navbar-logout:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.navbar-user {
+  margin-left: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+}
+
+/* @media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+  }
+
+  .navbar-auth {
+    margin-top: 20px;
+  }
+
+  .navbar-register,
+  .navbar-logout {
+    margin: 0 10px;
+  }
+} */

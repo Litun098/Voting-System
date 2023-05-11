@@ -18,9 +18,11 @@ function Login() {
         email: email,
         password: password,
       });
+      console.log(response)
       if (response.data.success) {
         localStorage.setItem('token', response.data.Token);
-        console.log(response.data);
+        localStorage.setItem('firstName', response.data.data.firstname);
+        localStorage.setItem('lastName', response.data.data.lastname);
         setMessage(response.data.message);
         history.push('/');
       } else {
@@ -31,6 +33,7 @@ function Login() {
       setMessage('Something went wrong');
     }
   };
+  
 
   return (
     <div>

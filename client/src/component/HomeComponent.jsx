@@ -31,7 +31,7 @@ const HomeComponent = () => {
       <div className="wrapper">
         <div className="links" id="poll">
           <button className="button create-poll">Create Pole</button>
-          {/* <button className="button active-poll">Active Poll</button> */}
+          <button className="button active-poll">Active Poll</button>
           <button className="button results">Results</button>
         </div>
         <div className='search-container'>

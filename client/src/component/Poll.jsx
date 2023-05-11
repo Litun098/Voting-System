@@ -20,7 +20,7 @@ const Poll = ({ poll }) => {
           "x-access-token": token
         },
       });
-
+      console.log(response);
       setOptions(options.map((option, index) => {
         if (index === optionIndex) {
           option.votes += 1;
