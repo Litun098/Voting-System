@@ -4,7 +4,7 @@ require("dotenv").config();
 async function verifyToken(req, res, next) {
   try {
     const token = req.headers["x-access-token"];
-    console.log("Hitting the Middleware");
+    
     if (!token) {
       console.log("Token not found.");
       return res.status(401).send({ msg: "Auth token is missing." });

@@ -4,7 +4,7 @@ const { verifyToken } = require('../config/jwtAuth');
 const voteRouter = express.Router();
 
 // API to vote
-voteRouter.post('/vote',verifyToken,vote);
+voteRouter.get('/vote',verifyToken,vote);
 
 // Get all polls voted by user
 voteRouter.get('/vote',verifyToken,allPollsVotedByUser);

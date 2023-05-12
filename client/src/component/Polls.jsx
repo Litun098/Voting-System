@@ -8,6 +8,7 @@ const Polls = () => {
 
   useEffect(() => {
     const getPolls = async () => {
+      
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get("http://localhost:5000/api/poll", {
@@ -15,7 +16,6 @@ const Polls = () => {
         });
         if (response.data.success) {
           setPolls(response.data.data);
-          console.log(response.data);
         } else {
           console.log(response.data.message);
         }

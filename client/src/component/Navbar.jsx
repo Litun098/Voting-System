@@ -50,6 +50,11 @@ function Navbar() {
           <div className="navbar-logo">
             <HowToVoteIcon onClick={() => { history.push('/') }} />
             <div className="navbar-user">{firstName} {lastName}</div>
+            {!(history.location.pathname === '/') &&
+            <Link to ='/'>
+            <div className="navbar-user">Home</div>
+            </Link> 
+            }
           </div>
           <div className="navbar-logout" onClick={handleLogout}>
             <LogoutIcon />

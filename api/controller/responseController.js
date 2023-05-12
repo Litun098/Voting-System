@@ -9,24 +9,22 @@ const vote = async (req, res) => {
     const userId = req.userId;
     const pollId = req.query.pollId;
     const votedFor = req.query.votedFor;
-    // console.log(userId, pollId, votedFor);
 
-    const response = await Response.create({ user:userId, poll:pollId, votedFor });
+    const response = await Response.create({ user:userId, poll:pollId, votedFor:votedFor });
     const poll = await Poll.findOne({ _id: pollId });
-    const createdBy = await User.findOne({_id:poll.userId});
+    // const createdBy = await User.findOne({_id:poll.userId});
 
-    console.log(createdBy);
-    return res.status(500).json({
+    return res.status(200).json({
       success: true,
       message: `Voted successfully. Result is expected to be declared on ${poll.endDate}`,
       data: response,
-      createdBy: createdBy.firstname+" "+createdBy.lastname,
+      // createdBy: createdBy.firstname+" "+createdBy.lastname,
     });
   } catch (err) {
     console.log(err);
     return res.status(500).json({
       success: false,
-      message: "Something went wrong",
+      message: "Something went wrong.",
     });
   }
 };

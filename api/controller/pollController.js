@@ -1,4 +1,5 @@
 const Poll = require("../model/poll");
+const Response = require('../model/response')
 
 // Create Poll
 const create = async (req, res) => {
@@ -77,12 +78,10 @@ const destroy = async (req, res) => {
 
 // Update Poll Status
 const update = async (req, res) => {
-  console.log("Hitting this API");
   try {
     const id = req.query.id;
     const requestStatus = req.query.status;
     const userId = req.userId;
-    console.log(id, requestStatus, userId);
     const poll = await Poll.findById(id);
 
     if (poll.userId != userId) {
@@ -133,11 +132,19 @@ const getPoll = async (req, res) => {
 // Get all polls
 const getAllPolls = async (req, res) => {
   try {
+    // get the ID of the user making the request
+    const userId = req.userId;
+
+    // find the IDs of the polls that the user has voted for
+    const responses = await Response.find({ user: userId }, { poll: 1 });
+    const votedPollIds = responses.map((response) => response.poll);
+
+    // find the polls that the user has not voted for
     const polls = await Poll.find(
-      { status: true },
+      { _id: { $nin: votedPollIds }, status: true },
       { userId: 1, title: 1, options: 1, startDate: 1, endDate: 1 }
     );
-    console.log(polls);
+
     return res.status(200).send({
       message: "Data fetched successfully",
       success: true,
@@ -151,6 +158,7 @@ const getAllPolls = async (req, res) => {
     });
   }
 };
+
 
 module.exports = {
   create,

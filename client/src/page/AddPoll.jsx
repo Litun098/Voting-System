@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import Navbar from '../component/Navbar';
 import '../styles/addPoll.css';
+import axios from 'axios';
 
 function AddPoll() {
   const [title, setTitle] = useState('');
   const [options, setOptions] = useState(['', '']);
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
+  const [message,setMessage] = useState('');
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -43,6 +45,22 @@ function AddPoll() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // TODO: submit poll data to server
+    const data = {
+      title,
+      options: options.filter((option) => option !== ''),
+      startDate: new Date(startDate).toISOString(),
+      endDate: new Date(endDate).toISOString(),
+    };
+    try{
+      const token = localStorage.getItem('token');
+      const response = axios.post('http://localhost:5000/api/poll',data,{
+        headers: { "x-access-token": token },
+      })
+      setMessage('Successfully created POLL!');
+    }catch(err){
+      console.log('Something went wrong...',err);
+      setMessage("Something went wrong. Could not created the Poll.");
+    }
   };
 
   return (
@@ -50,6 +68,7 @@ function AddPoll() {
       <Navbar />
       <div className='form-container'>
         <form onSubmit={handleSubmit}>
+          {message && <p>{message}</p>}
           <label>
             Title:
             <input type="text" value={title} onChange={handleTitleChange} />

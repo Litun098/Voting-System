@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import SearchIcon from '@mui/icons-material/Search'
 import Polls from "./Polls";
+import {Link} from 'react-router-dom'
 
 const HomeComponent = () => {
   // const [polls, setPolls] = useState([]);
@@ -30,7 +31,9 @@ const HomeComponent = () => {
     <div className="home-container">
       <div className="wrapper">
         <div className="links" id="poll">
+          <Link to="/add-poll">
           <button className="button create-poll">Create Pole</button>
+          </Link>
           <button className="button active-poll">Active Poll</button>
           <button className="button results">Results</button>
         </div>
