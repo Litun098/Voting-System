@@ -9,7 +9,7 @@ const responseSchema = new mongoose.Schema(
     poll: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Poll",
-      unique:true
+      unique:true,
     },
     votedFor: {
       type: String,

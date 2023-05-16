@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios';
+import Navbar from '../component/Navbar'
+import '../styles/result.css'
 
 const Results = () => {
   const [polls, setPolls] = useState([]);
@@ -8,10 +11,14 @@ const Results = () => {
   useEffect(() => {
     const fetchPolls = async () => {
       try {
-        const userId = localStorage.getItem("userId");
-        const response = await fetch(`/api/poll/user/${userId}/voted`);
-        const data = await response.json();
-        setPolls(data.data);
+        const token = localStorage.getItem("token");
+        const response = await axios.get(`http://localhost:5000/api/vote/results`, {
+          headers: {
+            'x-access-token': token,
+          },
+        });
+        console.log(response.data.data);
+        setPolls(response.data.data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching polls voted by user:", error);
@@ -22,22 +29,24 @@ const Results = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className = "loading-div">Loading...</div>;
   }
 
   return (
     <div>
-      <h2>Polls Voted By User</h2>
+      <Navbar/>
+
+      {polls ? <h2>Polls Voted By You</h2>:<h1>No Result Yet.</h1>}
       <ul>
         {polls.map((poll) => {
           if (poll.status === false) {
-            return null;
+            return (
+              <li key={poll._id}>
+                <Link to={`/result/pollId=${poll._id}`}>{poll.title}</Link>
+              </li>
+            );
           }
-          return (
-            <li key={poll._id}>
-              <Link to={`/polls/${poll._id}`}>{poll.question}</Link>
-            </li>
-          );
+          return null;
         })}
       </ul>
     </div>

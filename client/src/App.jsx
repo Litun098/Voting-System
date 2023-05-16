@@ -6,6 +6,7 @@ import Results from "./page/Results";
 import Register from "./page/Register";
 import Login from "./page/Login";
 import Navbar from "./component/Navbar";
+import PollResult from './page/PollResult'
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
         {/* <Route path="/active-poll">
           <ActivePoll/>
         </Route> */}
+        <Route path="/result/pollId=${pollId}">
+          <PollResult/>
+        </Route>
       </Switch>
     </Router>
   );

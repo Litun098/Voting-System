@@ -8,3 +8,14 @@
   <li>Node.js version 18</li>
   <li>MongoDB</li>
 </ul>
+
+## Start
+```bash
+  cd client
+  npm start
+```
+```bash
+  cd api
+  npm start
+```
+

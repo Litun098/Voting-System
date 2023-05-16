@@ -7,7 +7,7 @@ const voteRouter = express.Router();
 voteRouter.get('/vote',verifyToken,vote);
 
 // Get all polls voted by user
-voteRouter.get('/vote',verifyToken,allPollsVotedByUser);
+voteRouter.get('/vote/results',verifyToken,allPollsVotedByUser);
 
 // Get Poll result By Poll Id
 voteRouter.get('/result',verifyToken,getResultOfPoll);

@@ -2,12 +2,19 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import '../styles/poll.css';
+import { useHistory } from 'react-router-dom';
 
 const Poll = ({ poll }) => {
+  const history = useHistory();
   const [options, setOptions] = useState(
     poll.options.map(option => ({ value: option, selected: false, disabled: false }))
   ); // added "votes" property to keep track of votes for each option
-
+  
+  const handleUser = ()=>{
+    if(!localStorage.getItem('token')){
+      history.push('/login');
+    }
+  }
   const [disabled, setDisabled] = useState(false);
   const [voted, setVoted] = useState(false);
   const [selection, setSelection] = useState(null);
@@ -34,7 +41,6 @@ const Poll = ({ poll }) => {
       const pollId = poll._id;
       const votedFor = option;
       const token = localStorage.getItem('token');
-      console.log(pollId, votedFor);
 
       const response = await axios.get(`http://localhost:5000/api/vote?pollId=${pollId}&votedFor=${votedFor}`, {
         headers: {
@@ -62,6 +68,8 @@ const Poll = ({ poll }) => {
   };
 
   return (
+
+
     <div className="poll-card">
       <div className="poll-header">
         <h6 className="poll-title">{poll.title}</h6>
@@ -75,7 +83,7 @@ const Poll = ({ poll }) => {
             onClick={() => handleOptionClick(option.value, index)}
             value={index}
           >
-            <span className="poll-option-text">{option.value}</span>
+            <span className="poll-option-text" onClick={handleUser}>{option.value}</span>
           </button>
         ))}
       </div>

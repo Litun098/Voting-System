@@ -11,3 +11,14 @@
     padding: 20px;
   }
 }
+
+.no-active-polls{
+  display: flex;
+  align-items: center;
+  justify-content:center;
+}
+.loading-div{
+  display: flex;
+  align-items: center;
+  justify-content:center;
+}
