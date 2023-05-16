@@ -43,8 +43,7 @@ function AddPoll() {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    // TODO: submit poll data to server
+    
     const data = {
       title,
       options: options.filter((option) => option !== ''),
@@ -56,7 +55,7 @@ function AddPoll() {
       const response = axios.post('http://localhost:5000/api/poll',data,{
         headers: { "x-access-token": token },
       })
-      setMessage('Successfully created POLL!');
+      alert('Successfully created POLL!');
     }catch(err){
       console.log('Something went wrong...',err);
       setMessage("Something went wrong. Could not created the Poll.");

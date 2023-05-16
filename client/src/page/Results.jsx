@@ -29,14 +29,23 @@ const Results = () => {
   }, []);
 
   if (loading) {
-    return <div className = "loading-div">Loading...</div>;
+    return <div className="loading-div"><h1>Loading...</h1></div>;
   }
 
+  if(polls.length === 0){
+    return (
+      <>
+      <Navbar/>
+      <div className="no-active-polls">
+        <h3>Result Yet to be out!</h3>
+      </div>
+      </>
+    )
+  }
   return (
     <div>
       <Navbar/>
-
-      {polls ? <h2>Polls Voted By You</h2>:<h1>No Result Yet.</h1>}
+      <h5>Polls Voted By You</h5>
       <ul>
         {polls.map((poll) => {
           if (poll.status === false) {
