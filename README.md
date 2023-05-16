@@ -9,11 +9,14 @@
   <li>MongoDB</li>
 </ul>
 
-## Start
+## Start Client 
+
 ```bash
   cd client
   npm start
 ```
+
+## Start Server
 ```bash
   cd api
   npm start
